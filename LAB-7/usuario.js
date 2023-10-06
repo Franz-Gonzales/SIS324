@@ -1,4 +1,3 @@
-// Crear los datos de 5 usuarios, utilizando las clases usuario y control usuario, y mostrar los datos de los usuarios Enviar la imagen de los usuarios, y el nombre del estudiante, enviar el archivo pdf
 
 class Usuario {
     constructor(id, nombre, cuenta, clave, email, rol) {
@@ -80,14 +79,4 @@ class ControlUsuario {
     }
 
 }
-
-
-// let Crtl_Usuario = new ControlUsuario();
-// let lista_Usuarios = ControlUsuario.obtenerListaUsuarios();
-
-// console.log("LAB-6 DE SIS324 Usuario y Control Usuario");
-// console.log("Gonzales Suyo Franz Reinaldo   GL-1")
-
-// console.log("Mostrar Lista de Usuarios: ", lista_Usuarios);
-
 
