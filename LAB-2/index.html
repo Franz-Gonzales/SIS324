@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Armando Nuñez Condori LAB-2 SIS324</h2>
+    <script>
+
+        class ordenamiento_de_numeros {
+
+            constructor(a, b, c) {
+                this.primer_num = a;
+                this.segundo_num = b;
+                this.tercer_num = c;
+            }
+            order_simple() {
+                if (this.primer_num <= this.segundo_num && this.primer_num <= this.tercer_num) {
+                    if (this.segundo_num <= this.tercer_num) {
+
+                        document.write("<br>", this.primer_num, "<br>", this.segundo_num, "<br>", this.tercer_num);
+                    }
+                    else {
+                        document.write("<br>", this.primer_num, "<br>", this.tercer_num, "<br>", this.segundo_num);
+                    }
+                }
+                else if (this.segundo_num <= this.primer_num && this.segundo_num <= this.tercer_num) {
+                    if (this.primer_num <= this.tercer_num) {
+                        document.write("<br>", this.segundo_num, "<br>", this.primer_num, "<br>", this.tercer_num);
+                    }
+
+                    else {
+                        document.write("<br>", this.segundo_num, "<br>", this.tercer_num, "<br>", this.primer_num);
+                    }
+                }
+                else if (this.tercer_num <= this.primer_num && this.tercer_num <= this.segundo_num) {
+                    if (this.primer_num <= this.segundo_num) {
+                        document.write("<br>", this.tercer_num, "<br>", this.primer_num, "<br>", this.segundo_num);
+                    }
+                    else {
+                        document.write("<br>", this.tercer_num, "<br>", this.segundo_num, "<br>", this.primer_num);
+                    }
+                }
+
+
+            }
+
+            asignacion() {
+
+                if (this.primer_num <= this.segundo_num && this.primer_num <= this.tercer_num) {
+                    if (this.segundo_num <= this.tercer_num) {
+                        document.write(this.primer_num, this.segundo_num, this.tercer_num);
+                    } else {
+                        document.write(this.primer_num, this.tercer_num, this.segundo_num);
+                    }
+                } else if (this.segundo_num <= this.primer_num && this.segundo_num <= this.tercer_num) {
+                    if (this.primer_num <= this.tercer_num) {
+                        document.write(this.segundo_num, this.primer_num, this.tercer_num);
+                    } else {
+                        document.write(this.segundo_num, this.tercer_num, this.primer_num);
+                    }
+                } else {
+                    if (this.primer_num <= this.segundo_num) {
+                        document.write(this.tercer_num, this.primer_num, this.segundo_num);
+                    } else {
+                        document.write(this.tercer_num, this.segundo_num, this.primer_num);
+                    }
+                }
+            }
+            con_array() {
+                const numeros = [this.primer_num, this.segundo_num, this.tercer_num];
+                numeros.sort();
+                document.write(numeros,"hola");
+            }
+        }
+        instancia_1 = new ordenamiento_de_numeros(8, 2, 1);
+        instancia_1.order_simple();
+
+        document.write('<br> Con asignacion:')
+
+        instancia_1.asignacion();
+
+        document.write('<br> Con Array:')
+        // instancia_1.con_array();
+
+
+        instancia_1.asignacion();
+    </script>
+</body>
+
+</html>

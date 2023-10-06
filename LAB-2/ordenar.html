@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        class ordenar_Numeros {
+
+            constructor(a, b, c) {
+                this.num1 = a;
+                this.num2 = b;
+                this.num3 = c;
+            }
+
+            // Orden simple
+            order_simple() {
+                let menor, medio, mayor;
+
+                if (this.num1 <= this.num2 && this.num1 <= this.num3) {
+                    menor = this.num1;
+                    medio = (this.num2 <= this.num3) ? this.num2 : this.num3;
+                    mayor = (this.num2 > this.num3) ? this.num2 : this.num3;
+                } else {
+                    if (this.num2 <= this.num1 && this.num2 <= this.num3) {
+                        menor = this.num2;
+                        medio = (this.num1 <= this.num3) ? this.num1 : this.num3;
+                        mayor = (this.num1 > this.num3) ? this.num1 : this.num3;
+                    } else {
+                        if (this.num3 <= this.num1 && this.num3 <= this.num2) {
+                            menor = this.num3;
+                            medio = (this.num1 <= this.num2) ? this.num1 : this.num2;
+                            mayor = (this.num1 > this.num2) ? this.num1 : this.num2;
+                        }
+                    }
+                }
+                return [menor, medio, mayor];
+            }
+
+
+            // Ordenamiento de numeros por intercambio
+            order_intercambiadoVariables() {
+                let aux;
+
+                if (this.num1 > this.num2) {
+                    aux = this.num1;
+                    this.num1 = this.num2;
+                    this.num2 = aux;
+                }
+                if (this.num1 > this.num3) {
+                    aux = this.num1
+                    this.num1 = this.num3;
+                    this.num3 = aux;
+                }
+                if (this.num2 > this.num3) {
+                    aux = this.num2;
+                    this.num2 = this.num3;
+                    this.num3 = aux;
+                }
+
+                return [this.num1, this.num2, this.num3];
+            }
+
+
+            // Ordenar mediante un array
+            order_array() {
+                const numeros = [this.num1, this.num2, this.num3];
+                numeros.sort();
+                // numeros.sort((a,b)=>a-b);
+
+                return numeros;
+            }
+        }
+
+        // Crear una nueva instancia de la clase
+        const ordenar = new ordenar_Numeros(5, 8, 2);
+
+        console.log("Gonzales Suyo Franz Reinaldo LAB-2");
+        console.log("Orden con simple secuencia: ");
+        console.log("Los numeros ordenados son: ", ordenar.order_simple());
+
+        console.log("Orden con intercambio de variable: ");
+        console.log(ordenar.order_intercambiadoVariables());
+
+        console.log("Orden con Array: ");
+        console.log(ordenar.order_array());
+
+    </script>
+</body>
+
+</html>

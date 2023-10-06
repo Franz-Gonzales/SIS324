@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //CONDICIONES SIMPLES
+        var a = 8, b = 3, c = 5;
+
+        function OrdenarSimple() {
+            var salida = "";
+
+            if (a < b) {
+                if (b < c) salida = a + " " + b + " " + c;
+                else {
+                    if (c < a) salida = c + " " + a + " " + b;
+                    else salida = a + " " + c + " " + b;
+                }
+            } else {
+                if (a < c) salida = b + " " + a + " " + c;
+                else {
+                    if (c < b) salida = c + " " + b + " " + a;
+                    else salida = b + " " + c + " " + a;
+                }
+            }
+
+            return salida;
+        }
+
+        console.log("LAB-1: Gonzales Suyo Franz Reianldo");
+        console.log("Ordenar tres números de menor a mayor ");
+        console.log("El orden de menor a mayor: " + OrdenarSimple());
+
+
+
+
+        //Intercabio de variables
+        function OrdenarIntercambio() {
+
+            var salida = "";
+
+            var aux;
+
+            if (a > b) {
+
+                aux = a; a = b; b = aux;
+
+            }
+
+            if (a > c) {
+
+                aux = a; a = c; c = aux;
+
+            }
+
+            if (b > c) {
+
+                aux = b; b = c; c = aux;
+
+            }
+
+            salida = a + " " + b + " " + c;
+
+            return salida;
+
+        }
+
+        console.log("Ordenar tres números de menor a mayor ");
+        console.log("Ordenar por Intercambio de variables");
+        console.log(OrdenarIntercambio());
+
+
+
+        // Utilizando un array
+
+        console.log("Ordenar tres números de menor a mayor ");
+        console.log("UTILIZANDO UN ARRAY");
+
+        var a = 6, b = 3, c = 9;
+        var ordenar = () => {
+            let numeros = [a, b, c];
+            numeros.sort();
+            var result = numeros;
+            return result;
+        }
+
+        console.log(ordenar());
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table {
+        border: 1px solid black;
+      }
+      td {
+        border: 1px solid black;
+      }
+    </style>
+    <script src="usuario.js"></script>
+  </head>
+  <body>
+    <h2>Usuarios</h2>
+
+    <div id="tabla_usuarios">
+      <!-- Contendido de la tabla -->
+    </div>
+
+    <script>
+      let Ctr_user = new ControlUsuario();
+      let lista_usuarios = ControlUsuario.obtenerListaUsuarios();
+      // let lista_usuarios = Ctr_user.obtenerListaUsuarios();
+
+      lista_usuarios.forEach((usuario) => Ctr_user.adicionar_Usuario(usuario));
+
+      armar_tabla_usuarios(Ctr_user.obtenerListaUsuarios());
+      // console.log(lista_usuarios);
+
+      function armar_tabla_usuarios(usuarios) {
+        const tablaUsuarios = document.getElementById("tabla_usuarios");
+
+        let html =
+          `<table>` +
+          `<thead>
+            <tr>
+              <th>Cuenta</th>
+              <th>Clave</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+          <tbody>`;
+        usuarios.forEach(function (usuario) {
+          html += `<tr>
+                <td>${usuario.cuenta}</td>
+                <td>${usuario.clave}</td>
+                <td>${usuario.email}</td>
+              </tr>`;
+        });
+        html += `</tbody>
+        </table>`;
+        tablaUsuarios.innerHTML = html;
+      }
+    </script>
+  </body>
+</html>

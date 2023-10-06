@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Números Complejos</title>
+</head>
+
+<body>
+
+    <h2>Gonzales Suyo Franz Reinaldo</h2>
+    <H2>LAB-4 SIS324 GL1 - Complejos</H2>
+
+    <h1>Operaciones con números complejos</h1>
+    <h2>Calculadora de Números Complejos</h2>
+
+    <!-- Entradas para los números complejos -->
+    <label for="num1">Número Complejo 1: </label>
+    <input type="text" id="num1" placeholder="Ejemplo: 5 + 3i">
+    <br>
+    <br>
+    <label for="num2">Número Complejo 2: </label>
+    <input type="text" id="num2" placeholder="Ejemplo: -2 + 4i">
+    <br>
+    <br>
+    <!-- Botones para operaciones -->
+    <button onclick="realizarOperacion('sumar')">Sumar</button>
+    <button onclick="realizarOperacion('restar')">Restar</button>
+    <button onclick="realizarOperacion('multiplicar')">Multiplicar</button>
+    <button onclick="realizarOperacion('dividir')">Dividir</button>
+    <br>
+
+    <!-- Resultado de la operación -->
+    <h2>Resultado: <span id="resultado"></span></h2>
+
+    <script>
+        // Clase Complejo
+        class Complejo {
+            constructor(real, imaginario) {
+                this.real = real;
+                this.imaginario = imaginario;
+            }
+
+            sumar(complejo) {
+                return new Complejo(this.real + complejo.real, this.imaginario + complejo.imaginario);
+            }
+
+            restar(complejo) {
+                return new Complejo(this.real - complejo.real, this.imaginario - complejo.imaginario);
+            }
+
+            multiplicar(complejo) {
+                const real = this.real * complejo.real - this.imaginario * complejo.imaginario;
+                const imaginario = this.real * complejo.imaginario + this.imaginario * complejo.real;
+                return new Complejo(real, imaginario);
+            }
+
+            dividir(complejo) {
+                const denominador = complejo.real * complejo.real + complejo.imaginario * complejo.imaginario;
+                const real = (this.real * complejo.real + this.imaginario * complejo.imaginario) / denominador;
+                const imaginario = (this.imaginario * complejo.real - this.real * complejo.imaginario) / denominador;
+                return new Complejo(real, imaginario);
+            }
+
+            toString() {
+                return `${this.real} + ${this.imaginario}i`;
+            }
+
+            static toComplejo(stringComplejo) {
+                const partes = stringComplejo.split('+');
+                if (partes.length !== 2) {
+                    throw new Error('Formato de cadena de complejo incorrecto');
+                }
+                const real = parseFloat(partes[0]);
+                const imaginario = parseFloat(partes[1].replace('i', '').trim());
+                if (isNaN(real) || isNaN(imaginario)) {
+                    throw new Error('Formato de cadena de complejo incorrecto');
+                }
+                return new Complejo(real, imaginario);
+            }
+        }
+
+        // Función para realizar operaciones
+        function realizarOperacion(operacion) {
+            const num1Str = document.getElementById("num1").value;
+            const num2Str = document.getElementById("num2").value;
+
+            try {
+                const num1 = Complejo.toComplejo(num1Str);
+                const num2 = Complejo.toComplejo(num2Str);
+
+                let resultado;
+                if (operacion === 'sumar') {
+                    resultado = num1.sumar(num2);
+                } else if (operacion === 'restar') {
+                    resultado = num1.restar(num2);
+                } else if (operacion === 'multiplicar') {
+                    resultado = num1.multiplicar(num2);
+                } else if (operacion === 'dividir') {
+                    resultado = num1.dividir(num2);
+                }
+
+                document.getElementById("resultado").textContent = resultado.toString();
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+    </script>
+</body>
+
+</html>
