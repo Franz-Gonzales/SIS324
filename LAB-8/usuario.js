@@ -18,11 +18,6 @@ class Usuario {
   }
 }
 
-
-
-
-
-
 //Todo: Contol Usuario
 class ControlUsuario {
   constructor() {
@@ -57,13 +52,13 @@ class ControlUsuario {
     }
   }
 
-  verificar_Usuario(usuario){
+  verificar_Usuario(usuario) {
     let usuarioValido = false;
-    for(var i = 0; i < this.listaUsuario.length; i++){
-      if(
+    for (var i = 0; i < this.listaUsuario.length; i++) {
+      if (
         this.listaUsuario[i].email == usuario.email &&
         this.listaUsuario[i].clave == usuario.clave
-      ){
+      ) {
         usuarioValido = true;
         break;
       }
@@ -72,9 +67,8 @@ class ControlUsuario {
   }
 
   eliminar_Usuario(id) {
-    
-    for(var i = 0; i < this.listaUsuario.length; i++){
-      if(id == this.listaUsuario[i].id){
+    for (var i = 0; i < this.listaUsuario.length; i++) {
+      if (id == this.listaUsuario[i].id) {
         this.listaUsuario.splice(i, 1);
       }
     }
@@ -91,15 +85,9 @@ class ControlUsuario {
   }
 }
 
-
-
-
-
-
-
 var controlUsuario = new ControlUsuario();
 
-var Iniciar_secion = () =>{
+var Iniciar_secion = () => {
   var email = document.getElementById("email").value;
   var clave = document.getElementById("clave").value;
 
@@ -109,40 +97,39 @@ var Iniciar_secion = () =>{
   };
 
   let usuarioValido = controlUsuario.verificar_Usuario(usuario);
-  if(usuarioValido){
-    alert('Bienvenido ' + email);
-    open('usuarios.html');
-  }else{
-    alert('Usuario inválido');
+  if (usuarioValido) {
+    alert("Bienvenido " + email);
+    open("usuarios.html");
+  } else {
+    alert("Usuario inválido");
   }
+};
 
-}
+var Listar_Usuarios = function () {
+  let usuarios = [
+    [0, "Juan", "Perez", "abc", "juan@gmail.com", "admin"],
+    [1, "Lucas", "Mendez", "def", "lucas@gmail.com", "usuario"],
+    [2, "Elena", "Paredes", "ghi", "elena@gmail.com", "usuario"],
+    [3, "Margarita", "Loaiza", "jkl", "margarita@gmail.com", "admin"],
+    [4, "Franz", "Gonzales", "frgs", "gonzalesfranz2019@gmail.com", "admin"],
+    [5, "Pedro", "Perez", "polo", "pedro@gmail.com", "admin"],
+  ];
 
-var Listar_Usuarios = function() {
- let usuarios = [
-   [0, "Juan", "Perez", "abc", "juan@gmail.com", "admin"],
-   [1, "Lucas", "Mendez", "def", "lucas@gmail.com", "usuario"],
-   [2, "Elena", "Paredes", "ghi", "elena@gmail.com", "usuario"],
-   [3, "Margarita", "Loaiza", "jkl", "margarita@gmail.com", "admin"],
-   [4, "Franz", "Gonzales", "frgs", "gonzalesfranz2019@gmail.com", "admin"],
-   [5, "Pedro", "Perez", "polo", "pedro@gmail.com", "admin"],
- ];
+  //  var pos = 0;
+  for (let i = 0; i < usuarios.length; i++) {
+    let user = new Usuario(
+      usuarios[i][0],
+      usuarios[i][1],
+      usuarios[i][2],
+      usuarios[i][3],
+      usuarios[i][4],
+      usuarios[i][5]
+    );
 
-//  var pos = 0;
- for (let i = 0; i < usuarios.length; i++) {
-   let user = new Usuario(
-     usuarios[i][0],
-     usuarios[i][1],
-     usuarios[i][2],
-     usuarios[i][3],
-     usuarios[i][4],
-     usuarios[i][5]
-   );
-
-   // listaUsuarios.push(user);
-   controlUsuario.adicionar_Usuario(user);
- }
-}
+    // listaUsuarios.push(user);
+    controlUsuario.adicionar_Usuario(user);
+  }
+};
 
 Listar_Usuarios();
 
