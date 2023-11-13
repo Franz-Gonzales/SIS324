@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+        background: linear-gradient(to top left, #1db1e7, #0be38da6, #df90e6, #55e29b);
+        /* background-size: cover; */
+        height: 200vh;
+        font-family: sans-serif;
+        }
+
+        .container {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        height: 100vh;
+        font-family: sans-serif;
+        flex-direction: column;
+        /* gap: 0.5rem; */
+        }
+
+        .datos p {
+        font-size: 1.1rem;
+        font-weight: bold;
+        text-align: center;
+        }
+
+
+        .tabla_usuarios {
+        transition: 0.9s;
+        animation: fadeIn 0.5s;
+        }
+
+        .tabla_usuarios table {
+        width: 800px;
+        border-collapse: collapse;
+        /* backdrop-filter: blur(5px); */
+        background-color: rgba(247, 243, 243, 0.489);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        /* margin-top: 3rem; */
+        overflow: hidden;
+        }
+
+        .tabla_usuarios th,
+        .tabla_usuarios td {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        padding: 8px;
+        text-align: left;
+        }
+
+        .tabla_usuarios th {
+        background-color: #3498db;
+        color: white;
+        }
+
+        .tabla_usuarios td {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilos generales para los botones */
+        button {
+        padding: 8px 12px;
+        margin: 4px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        outline: none;
+        }
+        
+
+        /* Estilos para el botón "Editar" */
+        button[data-action="editar"] {
+        background-color: #28a745; /* Color verde */
+        color: #fff; /* Texto blanco */
+        }
+
+        /* Estilos para el botón "Eliminar" */
+        button[data-action="eliminar"] {
+        background-color: #dc3545; /* Color rojo */
+        color: #fff; /* Texto blanco */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="datos">
+            <p>Nombre: Gonzales Suyo Franz Reinaldo</p>
+            <p>LAB-11 SIS324 GL-1</p>
+            <p>Navigación Control Usuario</p>
+        </div>
+
+        <% if(lista && lista.length > 0){ %>
+            <div class="tabla_usuarios">
+                <h1>Lista de Usuarios</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Cuenta</th>
+                            <th>Clave</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Estampa</th>
+                            <th>Operaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% lista.forEach(usuario => { %>
+                            <tr>
+                                <td><%= usuario.id %></td>
+                                <td><%= usuario.nombre %></td>
+                                <td><%= usuario.cuenta %></td>
+                                <td><%= usuario.clave %></td>
+                                <td><%= usuario.email %></td>
+                                <td><%= usuario.rol %></td>
+                                <td><%= usuario.estampa %></td>
+                                <td>
+                                    <button><a href="#">Editar</a></button>
+                                    <button><a href="#">Eliminar</a></button>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        <% }else{ %>
+            <p>No hay datos que mostrar</p>
+        <% } %>
+    </div>
+</body>
+</html>
