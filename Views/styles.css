@@ -114,18 +114,7 @@ body {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+    /* STYLES PARA FORM DE REGISTRO  */
     .registro-container {
         background-color: #ffffff80;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -214,10 +203,7 @@ body {
       
 
 
-
-
-
-
+      /* STYLES PARA FORM PARA ACTUALIZAR REGISTRO  */
       .update-container {
         background-color: #ffffff80;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
