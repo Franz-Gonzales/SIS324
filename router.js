@@ -1,27 +1,61 @@
 const express = require("express");
 const router = express.Router();
 
-// const ControlUsuario = require("./controllers/controlUsuario.js");
-// const Usuario = require("./models/usuario.js");
-// const ctrlUsuario = new ControlUsuario();
-
 const Database = require('./Database/db');
-const db = new Database();
 
 router.get('/', (req, res) =>{
-    // db.db.all("SELECT * FROM usuario", [], (err, rows) =>{
-        
-    db.getAllUsuarios((err, rows) =>{
-        if(err){
-            console.error(err.message);
-            res.status(500).send("Error al recuperar los datos");
+
+    // res.render('index');
+
+    //? PARA MOSTRAR USUARIOS
+    var sql = "SELECT * FROM usuario";
+    Database.query(sql, (error, results) => {
+
+        if(error){
+            throw error;
         }else{
-            res.render("index", { lista: rows });
+            // res.send(results);  
+            res.render('index', { listaUsuarios: results });
         }
     });
 });
 
 
+ //? RUTA PARA CREAR UN NUEVO USUARIO
+router.get('/create', (req, res) =>{
+    res.render('create');
+});
+
+//? RUTA PARA EDITAR REGISTROS
+router.get('/update/:id', (req, res)=>{
+    const id = req.params.id;
+    Database.query('SELECT * FROM usuario WHERE id = ?', [id], (error, results)=>{
+        if(error){
+            throw error;
+        }else{
+            res.render('update', {usuario: results[0]});
+        }
+    });
+});
+
+
+//? RUTA PARA ELIMINAR UN REGISTRO
+router.get('/delete/:id', (req, res) =>{
+    const id = req.params.id;
+    Database.query('DELETE FROM usuario WHERE id = ?', [id], (error, results)=>{
+        if(error){
+            throw error;
+        }else{
+            res.redirect('/');
+        }
+    });
+});
+
+const crud = require('./Controllers/controlUsuario');
+router.post('/create', crud.create);
+router.post('/update', crud.update);
+
+module.exports = router;
 
 
 
@@ -79,4 +113,4 @@ router.get('/', (req, res) =>{
 // });
 
 
-module.exports = router;
+// module.exports = router;

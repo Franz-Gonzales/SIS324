@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <% if(usuario) { %>
+  <div class="update-container">
+    <h2>Formulario para Editar Usuario</h2>
+    <form action="/update" id="formulario" method="post">
+        <input id="id" name="id" value="<%= usuario.id %>" hidden>
+
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required value="<%= usuario.nombre %>"/>
+  
+      <label for="cuenta">Cuenta:</label>
+      <input type="text" id="cuenta" name="cuenta" required value="<%= usuario.cuenta %>"/>
+  
+      <label for="password">Clave:</label>
+      <input type="password" id="clave" name="clave" required value="<%= usuario.clave %>"/>
+  
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required value="<%= usuario.email %>"/>
+  
+      <label for="rol">Rol:</label>
+      <select id="rol" name="rol" required>
+        <option <%= usuario.rol=='admin'? "selected":'' %> value="admin">Admin</option>
+        <option <%= usuario.rol=='usuario'? "selected":'' %> value="usuario">Usuario</option>
+      </select>
+  
+      <label for="estampa">Estampa</label>
+      <input type="text" id="estampa" name="estampa" value="<%= usuario.estampa %>">
+  
+      <button
+        type="submit"
+        class="registro-button"
+      >
+        Actualizar
+      </button>
+    </form>
+    <a href="/"><button class="registro-button">Cancelar</button></a>
+  </div>
+  <% } %>
+</div>
+
+</body>
+</html>

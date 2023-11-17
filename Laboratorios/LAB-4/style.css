@@ -33,7 +33,7 @@ h2{
     justify-content: space-evenly;
     margin-bottom: 2rem;
     background: #cccccc7a;
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     box-shadow: -5px 3px 17px rgba(0, 0, 0, 0.651);
 }
 
